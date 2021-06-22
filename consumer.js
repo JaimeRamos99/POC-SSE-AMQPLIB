@@ -30,7 +30,7 @@ function start() {
 
 // A worker that acks messages only if processed succesfully
 // the worker is the consumer
-function startComsumer() {
+function startConsumer() {
     // amqpConn.createChannel creates a channel on the connection
     amqpConn.createChannel(function(err, ch) { 
         if (closeOnErr(err)) return;
