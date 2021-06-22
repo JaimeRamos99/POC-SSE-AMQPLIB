@@ -2,6 +2,7 @@
 var amqp = require('amqplib/callback_api');
 var amqpConn = null;
 var CLOUDAMQP_URL = process.env.CLOUDAMQP_URL;
+
 //stablish a connection to RabbitMQ. If the connection is closed or fails to be established, it will try to reconnect. amqpConn will hold the connection and channels will be set up in the connection.
 function start() {
     amqp.connect(CLOUDAMQP_URL + "?heartbeat=60", function(err, conn) { 
@@ -23,13 +24,13 @@ function start() {
 
         console.log("[AMQP] consumer connected");
         amqpConn = conn;
-        startWorker();
+        startConsumer();
     });
 }
 
 // A worker that acks messages only if processed succesfully
 // the worker is the consumer
-function startWorker() {
+function startComsumer() {
     // amqpConn.createChannel creates a channel on the connection
     amqpConn.createChannel(function(err, ch) { 
         if (closeOnErr(err)) return;

@@ -86,8 +86,4 @@ function closeOnErr(err) {
     return true;
 }
 
-/*setInterval(function() { 
-    publish("", "jobs", new Buffer.from("work work work")); 
-}, 1000);
-*/
 module.exports = {start, publish}
